@@ -1,0 +1,27 @@
+version: 2
+enable-beta-ecosystems: true
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/instalog"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/instalog/example"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/instalog_platform_interface"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/instalog_android"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/instalog_ios"
+    schedule:
+      interval: "daily"

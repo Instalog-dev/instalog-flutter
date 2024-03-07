@@ -1,0 +1,32 @@
+name: instalog
+description: A Very Good Project created by Very Good CLI.
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: "^3.3.0"
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: instalog_android
+      ios:
+        default_package: instalog_ios
+
+dependencies:
+  flutter:
+    sdk: flutter
+  instalog_android:
+    path: ../instalog_android
+  instalog_ios:
+    path: ../instalog_ios
+  instalog_platform_interface:
+    path: ../instalog_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^1.0.3
+  plugin_platform_interface: ^2.1.8
+  very_good_analysis: ^5.1.0

@@ -1,0 +1,28 @@
+name: instalog_android
+description: Android implementation of the instalog plugin
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: "^3.3.0"
+
+flutter:
+  plugin:
+    implements: instalog
+    platforms:
+      android:
+        package: com.instalog.flutter
+        pluginClass: InstalogPlugin
+        dartPluginClass: InstalogAndroid
+
+dependencies:
+  flutter:
+    sdk: flutter
+  instalog_platform_interface:
+    path: ../instalog_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.8
+  very_good_analysis: ^5.1.0
