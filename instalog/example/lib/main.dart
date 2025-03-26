@@ -1,7 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:instalog/instalog.dart';
 
-void main() => runApp(const MyApp());
+import 'components/components.dart';
+
+void main() {
+  Instalog.instance.crash.setup(
+    appRunner: () => runApp(const MyApp()),
+  );
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -20,45 +28,110 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String? _platformName;
+  final apiTEC = TextEditingController();
+
+  @override
+  void initState() {
+    Instalog.instance.initialize(apiKey: 'pk.2gfh423f93xn42akwxiw2');
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Instalog Example')),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (_platformName == null)
-              const SizedBox.shrink()
-            else
-              Text(
-                'Platform Name: $_platformName',
-                style: Theme.of(context).textTheme.headlineSmall,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Instalog',
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () async {
-                if (!context.mounted) return;
-                try {
-                  final result = await getPlatformName();
-                  setState(() => _platformName = result);
-                } catch (error) {
-                  if (!context.mounted) return;
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Theme.of(context).primaryColor,
-                      content: Text('$error'),
-                    ),
-                  );
-                }
-              },
-              child: const Text('Get Platform Name'),
-            ),
-          ],
+              const Text(
+                "Welcome to Instalog's flutter example",
+                style: TextStyle(
+                  fontSize: 16,
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: apiTEC,
+                onFieldSubmitted: (text) {
+                  Instalog.instance.initialize(apiKey: text);
+                },
+                decoration: InstalogColors.textFieldDecoration.copyWith(
+                  hintText: 'Enter api key...',
+                ),
+              ),
+              const SizedBox(height: 40),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const SizedBox(height: 16),
+                  InstalogButton(
+                    onClick: () => showFeedback(),
+                    text: 'Feedback',
+                    buttonColor: InstalogColors.green,
+                  ),
+                  const SizedBox(height: 16),
+                  InstalogButton(
+                    onClick: () => logEvent(),
+                    text: 'Send Event',
+                  ),
+                  const SizedBox(height: 16),
+                  InstalogButton(
+                    onClick: () => simulateCrash(),
+                    text: 'Simulate Crash',
+                    buttonColor: InstalogColors.purple,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> logEvent() async {
+    await runFunction(() => Instalog.instance.logEvent(
+          event: 'user_login',
+          params: {'name': 'John doe', 'age': '20'},
+        ));
+  }
+
+  Future<void> showFeedback() async {
+    await runFunction(() => Instalog.instance.showFeedbackModal());
+  }
+
+  void simulateCrash() {
+    // This will cause a real crash that will be caught by Instalog.instance.crash
+    throw Exception('This is a simulated crash');
+  }
+
+  Future<void> runFunction(Future<dynamic> Function() callback) async {
+    if (!context.mounted) return;
+    try {
+      final result = await callback();
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.green,
+          content: Text('$result'),
+        ),
+      );
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: Colors.redAccent,
+          content: Text('$error'),
+        ),
+      );
+    }
   }
 }

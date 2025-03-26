@@ -1,0 +1,6 @@
+name: instalog_flutter
+repository: https://github.com/zfinix/instalog_flutter
+
+packages:
+  - instalog*
+  - instalog/example

@@ -1,0 +1,8 @@
+# melos_managed_dependency_overrides: instalog_android,instalog_ios,instalog_platform_interface
+dependency_overrides:
+  instalog_android:
+    path: ../instalog_android
+  instalog_ios:
+    path: ../instalog_ios
+  instalog_platform_interface:
+    path: ../instalog_platform_interface

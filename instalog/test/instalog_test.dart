@@ -13,31 +13,37 @@ void main() {
 
   group('Instalog', () {
     late InstalogPlatform instalogPlatform;
+    late String apiKey;
 
     setUp(() {
       instalogPlatform = MockInstalogPlatform();
       InstalogPlatform.instance = instalogPlatform;
+      apiKey = 'test_key';
     });
 
     group('getPlatformName', () {
       test('returns correct name when platform implementation exists',
           () async {
-        const platformName = '__test_platform__';
+        const platformName = true;
         when(
-          () => instalogPlatform.getPlatformName(),
+          () => instalogPlatform.initialize(apiKey: apiKey),
         ).thenAnswer((_) async => platformName);
 
-        final actualPlatformName = await getPlatformName();
+        final actualPlatformName = await Instalog.instance.initialize(
+          apiKey: apiKey,
+        );
         expect(actualPlatformName, equals(platformName));
       });
 
       test('throws exception when platform implementation is missing',
           () async {
         when(
-          () => instalogPlatform.getPlatformName(),
+          () => instalogPlatform.initialize(
+            apiKey: apiKey,
+          ),
         ).thenAnswer((_) async => null);
 
-        expect(getPlatformName, throwsException);
+        expect(Instalog.instance.initialize, throwsException);
       });
     });
   });

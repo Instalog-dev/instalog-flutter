@@ -1,1 +1,19 @@
-include: package:very_good_analysis/analysis_options.5.1.0.yaml
+include: package:flutter_lints/flutter.yaml
+analyzer:
+  errors:
+    # There are a number of deprecated members used through this package
+    avoid_unnecessary_containers: ignore
+    depend_on_referenced_packages: ignore
+    deprecated_member_use_from_same_package: ignore
+    no_wildcard_variable_uses: ignore
+    use_build_context_synchronously: ignore
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.k.dart"
+    - "**/*.freezed.dart"
+
+
+linter:
+  rules:
+    public_member_api_docs: false
+    overridden_fields: false

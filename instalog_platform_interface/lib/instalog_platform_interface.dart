@@ -28,6 +28,34 @@ abstract class InstalogPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  /// Return the current platform name.
-  Future<String?> getPlatformName();
+  /// Initializes the Instalog SDK with the provided API key.
+  ///
+  /// [apiKey] - The API key for authenticating with Instalog services.
+  /// Returns `Future<bool?>` indicating whether initialization was successful.
+  Future<bool?> initialize({required String apiKey});
+
+  /// Logs a custom event with optional parameters.
+  ///
+  /// [event] - The name of the event to log.
+  /// [params] - Optional map of key-value pairs to include with the event.
+  /// Returns `Future<bool?>` indicating whether log was successful.
+  Future<bool?> logEvent({
+    required String event,
+    Map<String, String> params = const {},
+  });
+
+  /// Displays the feedback modal to collect user feedback.
+  ///
+  /// Returns `Future<bool?>` indicating whether the modal was shown successfully.
+  Future<bool?> showFeedbackModal();
+
+  /// Sends crash information to Instalog services.
+  ///
+  /// [error] - The error message to report.
+  /// [stack] - Optional stack trace associated with the error.
+  /// Returns `Future<bool?>` indicating whether the crash was reported successfully.
+  Future<bool?> sendCrash({
+    required String error,
+    String? stack,
+  });
 }

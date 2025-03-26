@@ -1,20 +1,9 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:instalog_platform_interface/instalog_platform_interface.dart';
+// ignore_for_file: implementation_imports
 
-/// The Android implementation of [InstalogPlatform].
-class InstalogAndroid extends InstalogPlatform {
-  /// The method channel used to interact with the native platform.
-  @visibleForTesting
-  final methodChannel = const MethodChannel('instalog_android');
+import 'package:instalog_platform_interface/src/method_channel_instalog.dart';
 
-  /// Registers this class as the default instance of [InstalogPlatform]
-  static void registerWith() {
-    InstalogPlatform.instance = InstalogAndroid();
-  }
-
-  @override
-  Future<String?> getPlatformName() {
-    return methodChannel.invokeMethod<String>('getPlatformName');
-  }
+/// The Android implementation of [MethodChannelInstalog].
+class InstalogAndroid extends MethodChannelInstalog {
+  /// Registers this class as the default instance of [MethodChannelInstalog]
+  static void registerWith() {}
 }
