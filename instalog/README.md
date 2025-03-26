@@ -1,11 +1,10 @@
-<!-- Dark mode logo -->
+<!-- Logo that switches between light and dark mode on GitHub -->
 <a href="https://instalog.dev">
-  <img src="https://raw.githubusercontent.com/Instalog-dev/brand/refs/heads/main/logo/logo-text-light.png" alt="Instalog" width="200" style="max-width: 100%;" class="gh-light-mode-only">
-</a>
-
-<!-- Light mode logo -->
-<a href="https://instalog.dev">
-  <img src="https://raw.githubusercontent.com/Instalog-dev/brand/refs/heads/main/logo/logo-text-dark.png" alt="Instalog" width="200" style="max-width: 100%;" class="gh-dark-mode-only">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Instalog-dev/brand/refs/heads/main/logo/logo-text-dark.png">
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Instalog-dev/brand/refs/heads/main/logo/logo-text-light.png">
+    <img src="https://raw.githubusercontent.com/Instalog-dev/brand/refs/heads/main/logo/logo-text-light.png" alt="Instalog" width="200" style="max-width: 100%;">
+  </picture>
 </a>
 
 Developed with 💙 by [Instalog](https://instalog.dev) 🚀
