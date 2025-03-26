@@ -8,6 +8,7 @@ class InstalogColors {
   static const red = Color(0xFFFF3B30);
   static const black = Color(0xFF000000);
   static const green = Color(0xFF35C759);
+  static const orange = Color(0xFFFF9500);
 
   static InputDecoration get textFieldDecoration => InputDecoration(
         filled: true,

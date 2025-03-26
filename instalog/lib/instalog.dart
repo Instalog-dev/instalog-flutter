@@ -1,6 +1,9 @@
 import 'package:instalog/instalog_crash_catcher.dart';
 import 'package:instalog_platform_interface/instalog_platform_interface.dart';
 
+export 'package:instalog_platform_interface/instalog_platform_interface.dart'
+    show InstalogOptions;
+
 /// Main class for interacting with Instalog services.
 /// Provides methods for initialization, event logging, feedback, and crash reporting.
 class Instalog {
@@ -19,10 +22,15 @@ class Instalog {
   /// Initializes the Instalog SDK with the provided API key.
   ///
   /// [apiKey] - The API key for authenticating with Instalog services.
+  /// [options] - Configuration settings for the Instalog SDK.
   /// Returns `Future<bool>` indicating whether initialization was successful.
-  Future<bool> initialize({required String apiKey}) async {
+  Future<bool> initialize({
+    required String apiKey,
+    InstalogOptions options = const InstalogOptions(),
+  }) async {
     final res = await _platform.initialize(
       apiKey: apiKey,
+      options: options,
     );
 
     return res ?? false;
@@ -63,6 +71,15 @@ class Instalog {
       stack: stack?.toString(),
     );
 
+    return res ?? false;
+  }
+
+  /// Identifies the current user for analytics and logging.
+  ///
+  /// [userId] - A unique identifier for the user.
+  /// Returns `Future<bool>` indicating whether the identification was successful.
+  Future<bool> identifyUser({required String userId}) async {
+    final res = await _platform.identifyUser(userId: userId);
     return res ?? false;
   }
 }

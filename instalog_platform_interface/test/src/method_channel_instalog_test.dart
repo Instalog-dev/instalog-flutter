@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:instalog_platform_interface/instalog_platform_interface.dart';
 import 'package:instalog_platform_interface/src/method_channel_instalog.dart';
 
 void main() {
@@ -25,6 +26,8 @@ void main() {
               return true;
             case 'send_crash':
               return true;
+            case 'identify_user':
+              return true;
             default:
               return null;
           }
@@ -35,13 +38,24 @@ void main() {
     tearDown(log.clear);
 
     test('initialize invokes the correct method', () async {
+      final options = InstalogOptions(
+        isLogEnabled: true,
+        isLoggerEnabled: false,
+        isCrashEnabled: true,
+        isFeedbackEnabled: false,
+      );
+
       final result = await methodChannelInstalog.initialize(
         apiKey: 'test_key',
+        options: options,
       );
       expect(
         log,
         <Matcher>[
-          isMethodCall('initialize', arguments: {'api_key': 'test_key'})
+          isMethodCall('initialize', arguments: {
+            'api_key': 'test_key',
+            'options': options.toMap(),
+          })
         ],
       );
       expect(result, isTrue);
@@ -84,6 +98,21 @@ void main() {
           isMethodCall('send_crash', arguments: {
             'error': 'test_error',
             'stack': 'test_stack',
+          })
+        ],
+      );
+      expect(result, isTrue);
+    });
+
+    test('identifyUser invokes the correct method', () async {
+      final result = await methodChannelInstalog.identifyUser(
+        userId: 'test_user_123',
+      );
+      expect(
+        log,
+        <Matcher>[
+          isMethodCall('identify_user', arguments: {
+            'id': 'test_user_123',
           })
         ],
       );

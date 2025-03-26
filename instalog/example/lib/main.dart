@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:instalog/instalog.dart';
-
 import 'components/components.dart';
 
 void main() {
@@ -32,7 +31,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    Instalog.instance.initialize(apiKey: 'pk.2gfh423f93xn42akwxiw2');
+    initialize();
     super.initState();
   }
 
@@ -62,7 +61,21 @@ class _HomePageState extends State<HomePage> {
               TextFormField(
                 controller: apiTEC,
                 onFieldSubmitted: (text) {
-                  Instalog.instance.initialize(apiKey: text);
+                  Instalog.instance.initialize(
+                    apiKey: text,
+                    options: const InstalogOptions(
+                      isLogEnabled: true,
+                      isLoggerEnabled: true,
+                      isCrashEnabled: true,
+                      isFeedbackEnabled: true,
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      backgroundColor: InstalogColors.green,
+                      content: Text('API Key updated'),
+                    ),
+                  );
                 },
                 decoration: InstalogColors.textFieldDecoration.copyWith(
                   hintText: 'Enter api key...',
@@ -108,6 +121,20 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> showFeedback() async {
     await runFunction(() => Instalog.instance.showFeedbackModal());
+  }
+
+  Future<void> initialize() async {
+    Instalog.instance.initialize(
+      apiKey: 'instalog_ea1801ecfc294eb4b985f2bbef7da498',
+      options: const InstalogOptions(
+        isLogEnabled: true,
+        isLoggerEnabled: true,
+        isCrashEnabled: true,
+        isFeedbackEnabled: true,
+      ),
+    );
+    final userId = 'user_${DateTime.now().millisecondsSinceEpoch}';
+    await runFunction(() => Instalog.instance.identifyUser(userId: userId));
   }
 
   void simulateCrash() {

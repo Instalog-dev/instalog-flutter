@@ -9,10 +9,16 @@ class MethodChannelInstalog extends InstalogPlatform {
   final methodChannel = const MethodChannel('dev.instalog.flutter/channel');
 
   @override
-  Future<bool?> initialize({required String apiKey}) =>
+  Future<bool?> initialize({
+    required String apiKey,
+    InstalogOptions options = const InstalogOptions(),
+  }) =>
       methodChannel.invokeMethod<bool>(
         'initialize',
-        {'api_key': apiKey},
+        <String, dynamic>{
+          'api_key': apiKey,
+          'options': options.toMap(),
+        },
       );
 
   @override
@@ -39,6 +45,16 @@ class MethodChannelInstalog extends InstalogPlatform {
       <String, dynamic>{
         'error': error,
         'stack': stack,
+      },
+    );
+  }
+
+  @override
+  Future<bool?> identifyUser({required String userId}) {
+    return methodChannel.invokeMethod<bool>(
+      'identify_user',
+      <String, dynamic>{
+        'id': userId,
       },
     );
   }

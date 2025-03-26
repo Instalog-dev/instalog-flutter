@@ -1,6 +1,63 @@
 import 'package:instalog_platform_interface/src/method_channel_instalog.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
+/// Configuration options for the Instalog SDK.
+class InstalogOptions {
+  /// Creates a new instance of [InstalogOptions].
+  ///
+  /// All properties default to true if not specified.
+  const InstalogOptions({
+    this.isLogEnabled = true,
+    this.isLoggerEnabled = false,
+    this.isCrashEnabled = true,
+    this.isFeedbackEnabled = true,
+  });
+
+  /// Whether event logging functionality is enabled.
+  final bool isLogEnabled;
+
+  /// Whether internal logging for debugging is enabled.
+  final bool isLoggerEnabled;
+
+  /// Whether crash reporting functionality is enabled.
+  final bool isCrashEnabled;
+
+  /// Whether feedback functionality is enabled.
+  final bool isFeedbackEnabled;
+
+  /// Converts this options object to a map for serialization.
+  Map<String, bool> toMap() => {
+        'isLogEnabled': isLogEnabled,
+        'isLoggerEnabled': isLoggerEnabled,
+        'isCrashEnabled': isCrashEnabled,
+        'isFeedbackEnabled': isFeedbackEnabled,
+      };
+
+  /// Creates a new [InstalogOptions] instance from a map.
+  factory InstalogOptions.fromMap(Map<String, dynamic>? map) {
+    if (map == null) return const InstalogOptions();
+    return InstalogOptions(
+      isLogEnabled: map['isLogEnabled'] as bool? ?? true,
+      isLoggerEnabled: map['isLoggerEnabled'] as bool? ?? true,
+      isCrashEnabled: map['isCrashEnabled'] as bool? ?? true,
+      isFeedbackEnabled: map['isFeedbackEnabled'] as bool? ?? true,
+    );
+  }
+
+  InstalogOptions copyWith({
+    bool? isLogEnabled,
+    bool? isLoggerEnabled,
+    bool? isCrashEnabled,
+    bool? isFeedbackEnabled,
+  }) =>
+      InstalogOptions(
+        isLogEnabled: isLogEnabled ?? this.isLogEnabled,
+        isLoggerEnabled: isLoggerEnabled ?? this.isLoggerEnabled,
+        isCrashEnabled: isCrashEnabled ?? this.isCrashEnabled,
+        isFeedbackEnabled: isFeedbackEnabled ?? this.isFeedbackEnabled,
+      );
+}
+
 /// The interface that implementations of instalog must implement.
 ///
 /// Platform implementations should extend this class
@@ -31,8 +88,12 @@ abstract class InstalogPlatform extends PlatformInterface {
   /// Initializes the Instalog SDK with the provided API key.
   ///
   /// [apiKey] - The API key for authenticating with Instalog services.
+  /// [options] - Configuration settings for the Instalog SDK.
   /// Returns `Future<bool?>` indicating whether initialization was successful.
-  Future<bool?> initialize({required String apiKey});
+  Future<bool?> initialize({
+    required String apiKey,
+    InstalogOptions options = const InstalogOptions(),
+  });
 
   /// Logs a custom event with optional parameters.
   ///
@@ -58,4 +119,10 @@ abstract class InstalogPlatform extends PlatformInterface {
     required String error,
     String? stack,
   });
+
+  /// Identifies the current user for analytics and logging.
+  ///
+  /// [userId] - A unique identifier for the user.
+  /// Returns `Future<bool?>` indicating whether the identification was successful.
+  Future<bool?> identifyUser({required String userId});
 }

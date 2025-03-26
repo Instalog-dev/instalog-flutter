@@ -87,10 +87,10 @@ class InstalogPlugin : FlutterPlugin, MethodCallHandler, InstalogAlertDialogHand
         }
 
         val opt = InstalogOptions(
-            isLogEnabled = options["is_log_enabled"] as? Boolean ?: false,
-            isLoggerEnabled = options["is_logger_enabled"] as? Boolean ?: false,
-            isCrashEnabled = options["is_crash_enabled"] as? Boolean ?: false,
-            isFeedbackEnabled = options["is_feedback_enabled"] as? Boolean ?: false
+            isLogEnabled = options["isLogEnabled"] as? Boolean ?: false,
+            isLoggerEnabled = options["isLoggerEnabled"] as? Boolean ?: false,
+            isCrashEnabled = options["isCrashEnabled"] as? Boolean ?: false,
+            isFeedbackEnabled = options["isFeedbackEnabled"] as? Boolean ?: false
         )
 
         try {

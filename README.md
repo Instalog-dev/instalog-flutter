@@ -54,7 +54,27 @@ void initState() {
   super.initState();
   Instalog.instance.initialize(apiKey: 'your_api_key_here');
 }
+
+### Configuration Options
+
+Customize Instalog SDK behavior with `InstalogOptions`:
+
+```dart
+import 'package:instalog_platform_interface/instalog_platform_interface.dart';
+
+// Initialize with custom options
+Instalog.instance.initialize(
+  apiKey: 'your_api_key_here',
+  options: const InstalogOptions(
+    isLogEnabled: true,     // Enable event logging
+    isLoggerEnabled: false, // Disable internal debug logs
+    isCrashEnabled: true,   // Enable crash reporting
+    isFeedbackEnabled: true // Enable feedback modal
+  ),
+);
 ```
+
+All configuration options default to `true` except for `isLoggerEnabled` (defaults to `false`).
 
 ### Logging Events
 
@@ -95,6 +115,16 @@ try {
 }
 ```
 
+### User Identification
+
+Associate events with a specific user:
+
+```dart
+// Identify user with a unique ID
+Instalog.instance.identifyUser(userId: 'user_12345');
+```
+
+Identifying users allows you to track user-specific behavior and associate events and crashes with particular users, which is helpful for debugging and analytics.
 
 ## Platform-Specific Notes
 
@@ -103,6 +133,96 @@ Ensure you have added the necessary permissions to your `Info.plist` file if you
 
 #### Android
 If targeting Android 13 (API level 33) or higher, ensure you request the appropriate permissions for collecting user data.
+
+## Advanced Example
+
+Here's a complete example showing how to use multiple Instalog features together:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:instalog/instalog.dart';
+import 'package:instalog_platform_interface/instalog_platform_interface.dart';
+
+void main() {
+  // Set up crash handling
+  Instalog.instance.crash.setup(
+    appRunner: () => runApp(const MyApp()),
+  );
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    // Initialize with options
+    Instalog.instance.initialize(
+      apiKey: 'your_api_key_here',
+      options: const InstalogOptions(
+        isLogEnabled: true,
+        isLoggerEnabled: false,
+        isCrashEnabled: true,
+        isFeedbackEnabled: true,
+      ),
+    );
+    
+    // Identify the user
+    Instalog.instance.identifyUser(userId: 'user_${DateTime.now().millisecondsSinceEpoch}');
+    
+    // Log app start event
+    Instalog.instance.logEvent(
+      event: 'app_started',
+      params: {
+        'timestamp': DateTime.now().toIso8601String(),
+        'version': '1.0.0',
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Instalog Example')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () => Instalog.instance.showFeedbackModal(),
+              child: const Text('Show Feedback Modal'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                try {
+                  // Simulate an error
+                  throw Exception('Test exception');
+                } catch (error, stack) {
+                  Instalog.instance.sendCrash(error, stack);
+                }
+              },
+              child: const Text('Simulate & Report Error'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
