@@ -47,7 +47,15 @@ void main() {
       expect(
         log,
         <Matcher>[
-          isMethodCall('initialize', arguments: {'api_key': 'test_key'})
+          isMethodCall('initialize', arguments: {
+            'api_key': 'test_key',
+            'options': {
+              'isLogEnabled': true,
+              'isLoggerEnabled': false,
+              'isCrashEnabled': true,
+              'isFeedbackEnabled': true
+            }
+          })
         ],
       );
       expect(result, isTrue);
