@@ -113,14 +113,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> logEvent() async {
-    await runFunction(() => Instalog.instance.logEvent(
-          event: 'user_login',
-          params: {'name': 'John doe', 'age': '20'},
-        ));
+    Instalog.instance.logEvent(
+      event: 'user_login',
+      params: {'name': 'John doe', 'age': '20'},
+    );
   }
 
   Future<void> showFeedback() async {
-    await runFunction(() => Instalog.instance.showFeedbackModal());
+    Instalog.instance.showFeedbackModal();
   }
 
   Future<void> initialize() async {
@@ -134,31 +134,11 @@ class _HomePageState extends State<HomePage> {
       ),
     );
     final userId = 'user_${DateTime.now().millisecondsSinceEpoch}';
-    await runFunction(() => Instalog.instance.identifyUser(userId: userId));
+    Instalog.instance.identifyUser(userId: userId);
   }
 
   void simulateCrash() {
     // This will cause a real crash that will be caught by Instalog.instance.crash
     throw Exception('This is a simulated crash');
-  }
-
-  Future<void> runFunction(Future<dynamic> Function() callback) async {
-    if (!context.mounted) return;
-    try {
-      final result = await callback();
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.green,
-          content: Text('$result'),
-        ),
-      );
-    } catch (error) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: Colors.redAccent,
-          content: Text('$error'),
-        ),
-      );
-    }
   }
 }

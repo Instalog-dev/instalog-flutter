@@ -1,4 +1,4 @@
-package dev.instalog.flutter.example
+package com.instalog.flutter.example
 
 import io.flutter.embedding.android.FlutterActivity
 

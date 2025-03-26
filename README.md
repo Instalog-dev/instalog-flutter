@@ -31,6 +31,20 @@ dependencies:
   instalog: ^0.1.0
 ```
 
+
+## Platform-specific Setup
+
+### Android
+
+For feedback functionality on Android, ensure you have the Instalog activity registered in your AndroidManifest.xml:
+
+```xml
+<activity
+  android:name="dev.instalog.mobile.feedback.InstalogFeedbackActivity"
+  android:label="Instalog"
+  android:theme="@style/Theme.Instalog"/>
+```
+
 ## Usage
 
 ### Initialization
