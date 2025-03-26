@@ -30,7 +30,7 @@ jobs:
       - name: Run tests
         run: flutter test --coverage
       - name: Check code formatting
-        run: flutter format --set-exit-if-changed .
+        run: dart format --set-exit-if-changed .
 
   ios:
     runs-on: macos-latest
