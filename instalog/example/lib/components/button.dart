@@ -17,7 +17,7 @@ class InstalogButton extends StatelessWidget {
     this.borderRadius = 15.0,
     this.buttonColor = Colors.black,
     this.textColor = Colors.white,
-     this.onClick,
+    this.onClick,
   });
 
   @override
@@ -26,7 +26,8 @@ class InstalogButton extends StatelessWidget {
       onPressed: enabled ? onClick : null,
       style: ElevatedButton.styleFrom(
         backgroundColor: buttonColor,
-        padding: contentPadding ?? const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        padding: contentPadding ??
+            const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(borderRadius),
         ),
