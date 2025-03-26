@@ -1,7 +1,9 @@
 name: instalog
-description: A Very Good Project created by Very Good CLI.
+description: Flutter plugin for Instalog analytics, logging, error tracking, and user feedback collection services.
 version: 0.1.0+1
 publish_to: none
+homepage: https://instalog.dev
+repository: https://github.com/instalog-dev/instalog-flutter
 
 environment:
   sdk: "^3.3.0"

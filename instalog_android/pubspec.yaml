@@ -1,7 +1,9 @@
 name: instalog_android
-description: Android implementation of the instalog plugin
+description: Android implementation of the Instalog plugin that integrates with the native Android SDK for analytics, logs, and feedback.
 version: 0.1.0+1
 publish_to: none
+homepage: https://instalog.dev
+repository: https://github.com/instalog-dev/instalog-flutter
 
 environment:
   sdk: "^3.3.0"
@@ -14,6 +16,9 @@ flutter:
         package: dev.instalog.flutter
         pluginClass: InstalogPlugin
         dartPluginClass: InstalogAndroid
+      ios:
+        pluginClass: InstalogPlugin
+        dartPluginClass: InstalogIOS
 
 dependencies:
   flutter:
