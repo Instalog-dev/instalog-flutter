@@ -10,7 +10,8 @@
 
 Developed with 💙 by [Instalog](https://instalog.dev) 🚀
 
-![coverage][coverage_badge]
+[![Pub Version](https://img.shields.io/pub/v/instalog.svg)](https://pub.dev/packages/instalog)
+[![Coverage Status](https://coveralls.io/repos/github/Instalog-dev/instalog/badge.svg?branch=main)](https://coveralls.io/github/Instalog-dev/instalog?branch=main)
 [![License: MIT][license_badge]][license_link]
 
 A Flutter plugin for integrating Instalog analytics, logging, and crash reporting services into your Flutter applications. Instalog provides a comprehensive solution for monitoring app performance, user behavior, and error tracking.
@@ -104,7 +105,6 @@ Ensure you have added the necessary permissions to your `Info.plist` file if you
 #### Android
 If targeting Android 13 (API level 33) or higher, ensure you request the appropriate permissions for collecting user data.
 
-[coverage_badge]: instalog/coverage_badge.svg
 [license_badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license_link]: https://opensource.org/licenses/MIT
 [instalog_analysis_badge]: https://img.shields.io/badge/style-instalog_analysis-B22C89.svg
