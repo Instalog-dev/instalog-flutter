@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
       apiKey: 'instalog_ea1801ecfc294eb4b985f2bbef7da498',
       options: const InstalogOptions(
         isLogEnabled: true,
-        isLoggerEnabled: true,
+        isLoggerEnabled: false,
         isCrashEnabled: true,
         isFeedbackEnabled: true,
       ),

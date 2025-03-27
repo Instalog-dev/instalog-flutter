@@ -181,7 +181,6 @@ class InstalogPlugin : FlutterPlugin, MethodCallHandler, InstalogAlertDialogHand
     }
 
     override fun show(data: InstalogAlertData) {
-        TODO("Not yet implemented")
     }
 
     override fun onAttachedToActivity(binding: ActivityPluginBinding) {
