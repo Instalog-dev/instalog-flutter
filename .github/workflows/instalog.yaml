@@ -43,4 +43,4 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
       - name: Build iOS
-        run: flutter build ios --release
+        run: flutter build apk
