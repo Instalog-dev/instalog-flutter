@@ -23,11 +23,11 @@ A Flutter plugin for integrating Instalog analytics, logging, and crash reportin
 
 ## Installation
 
-Add `instalog_flutter: ^0.1.0` to your `pubspec.yaml`:
+Add `instalog_flutter: ^0.1.1` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  instalog_flutter: ^0.1.0
+  instalog_flutter: ^0.1.1
 ```
 
 

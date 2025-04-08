@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'instalog_ios'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'An iOS implementation of the instalog plugin.'
   s.description      = <<-DESC
   An iOS implementation of the instalog plugin.
