@@ -3,8 +3,10 @@ description: Demonstrates how to use the instalog plugin.
 version: 0.1.1
 publish_to: none
 
+resolution: workspace
 environment:
-  sdk: "^3.3.0"
+  sdk: "^3.6.0"
+  flutter: '>=3.3.0'
 
 dependencies:
   flutter:

@@ -4,8 +4,10 @@ version: 0.1.1
 homepage: https://instalog.dev
 repository: https://github.com/instalog-dev/instalog-flutter
 
+resolution: workspace
 environment:
-  sdk: "^3.3.0"
+  sdk: "^3.6.0"
+  flutter: '>=3.3.0'
 
 dependencies:
   flutter:
