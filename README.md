@@ -9,7 +9,7 @@
 
 Developed with 💙 by [Instalog](https://instalog.dev) 🚀
 
-[![Pub Version](https://img.shields.io/pub/v/instalog.svg)](https://pub.dev/packages/instalog)
+[![Pub Version](https://img.shields.io/pub/v/instalog.svg)](https://pub.dev/packages/instalog_flutter)
 [![Coverage Status](https://coveralls.io/repos/github/Instalog-dev/instalog/badge.svg?branch=main)](https://coveralls.io/github/Instalog-dev/instalog?branch=main)
 
 A Flutter plugin for integrating Instalog analytics, logging, and crash reporting services into your Flutter applications. Instalog provides a comprehensive solution for monitoring app performance, user behavior, and error tracking.
