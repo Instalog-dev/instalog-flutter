@@ -10,7 +10,7 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
-    directory: "/instalog/example"
+    directory: "/instalog_flutter/example"
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"

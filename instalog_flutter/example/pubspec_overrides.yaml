@@ -1,6 +1,6 @@
 # melos_managed_dependency_overrides: instalog,instalog_android,instalog_ios,instalog_platform_interface
 dependency_overrides:
-  instalog:
+  instalog_flutter:
     path: ..
   instalog_android:
     path: ../../instalog_android

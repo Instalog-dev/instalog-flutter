@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:instalog/instalog.dart';
+import 'package:instalog_flutter/instalog_flutter.dart';
 
 /// A class that catches and handles application crashes and errors.
 ///

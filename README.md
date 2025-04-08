@@ -23,11 +23,11 @@ A Flutter plugin for integrating Instalog analytics, logging, and crash reportin
 
 ## Installation
 
-Add `instalog` to your `pubspec.yaml`:
+Add `instalog_flutter: ^0.1.0` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  instalog: ^0.1.0
+  instalog_flutter: ^0.1.0
 ```
 
 
@@ -51,7 +51,7 @@ For feedback functionality on Android, ensure you have the Instalog activity reg
 Initialize the Instalog SDK at the start of your app:
 
 ```dart
-import 'package:instalog/instalog.dart';
+import 'package:instalog_flutterinstalog.dart';
 
 // Initialize in main.dart
 void main() {
@@ -153,7 +153,7 @@ Here's a complete example showing how to use multiple Instalog features together
 
 ```dart
 import 'package:flutter/material.dart';
-import 'package:instalog/instalog.dart';
+import 'package:instalog_flutterinstalog.dart';
 import 'package:instalog_platform_interface/instalog_platform_interface.dart';
 
 void main() {

@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:instalog/instalog.dart';
+import 'package:instalog_flutter/instalog_flutter.dart';
 import 'package:instalog_platform_interface/instalog_platform_interface.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';

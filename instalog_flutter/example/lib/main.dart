@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:instalog/instalog.dart';
+import 'package:instalog_flutter/instalog_flutter.dart';
 import 'components/components.dart';
 
 void main() {

@@ -1,4 +1,4 @@
-import 'package:instalog/instalog_crash_catcher.dart';
+import 'package:instalog_flutter/instalog_crash_catcher.dart';
 import 'package:instalog_platform_interface/instalog_platform_interface.dart';
 
 export 'package:instalog_platform_interface/instalog_platform_interface.dart'

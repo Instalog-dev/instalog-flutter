@@ -10,15 +10,12 @@ environment:
 
 flutter:
   plugin:
-    implements: instalog
+    implements: instalog_flutter
     platforms:
       android:
         package: dev.instalog.flutter
         pluginClass: InstalogPlugin
         dartPluginClass: InstalogAndroid
-      ios:
-        pluginClass: InstalogPlugin
-        dartPluginClass: InstalogIOS
 
 dependencies:
   flutter:

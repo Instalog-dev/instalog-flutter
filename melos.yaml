@@ -4,3 +4,6 @@ repository: https://github.com/zfinix/instalog_flutter
 packages:
   - instalog*
   - instalog/example
+
+scripts:
+  publish: melos publish --no-dry-run
