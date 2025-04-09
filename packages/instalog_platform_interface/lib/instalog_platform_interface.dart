@@ -7,7 +7,7 @@ class InstalogOptions {
   ///
   /// All properties default to true if not specified.
   const InstalogOptions({
-    this.isLogEnabled = true,
+    this.isLogEnabled = false,
     this.isLoggerEnabled = false,
     this.isCrashEnabled = true,
     this.isFeedbackEnabled = true,
