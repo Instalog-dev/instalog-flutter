@@ -1,6 +1,6 @@
 name: instalog_flutter
 description: Flutter plugin for Instalog analytics, logging, error tracking, and user feedback collection services.
-version: 0.1.1
+version: 0.1.2
 homepage: https://instalog.dev
 repository: https://github.com/instalog-dev/instalog-flutter
 
@@ -20,9 +20,9 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  instalog_android: ^0.1.1
-  instalog_ios: ^0.1.1
-  instalog_platform_interface: ^0.1.1
+  instalog_android: ^0.1.2
+  instalog_ios: ^0.1.2
+  instalog_platform_interface: ^0.1.2
 
 dev_dependencies:
   flutter_test:

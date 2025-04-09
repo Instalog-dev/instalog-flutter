@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.1 - Initial Release
+## 0.1.2 - Initial Release
 
 ### Added
 - Initial implementation of the Instalog platform interface

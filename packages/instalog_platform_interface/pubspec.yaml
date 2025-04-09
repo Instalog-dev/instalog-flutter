@@ -1,6 +1,6 @@
 name: instalog_platform_interface
 description: Platform interface for the Instalog plugin providing a common API for all platform implementations.
-version: 0.1.1
+version: 0.1.2
 homepage: https://instalog.dev
 repository: https://github.com/instalog-dev/instalog-flutter
 
