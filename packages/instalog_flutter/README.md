@@ -28,7 +28,7 @@ Add `instalog_flutter` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  instalog_flutter: ^0.1.2
+  instalog_flutter: ^0.1.3
 ```
 
 ## Usage

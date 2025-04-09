@@ -1,6 +1,6 @@
 name: instalog_ios
 description: iOS implementation of the Instalog plugin that integrates with the native iOS SDK for analytics, logs, and feedback.
-version: 0.1.2
+version: 0.1.3
 homepage: https://instalog.dev
 repository: https://github.com/instalog-dev/instalog-flutter
 
@@ -20,7 +20,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  instalog_platform_interface: ^0.1.2
+  instalog_platform_interface: ^0.1.3
 
 dev_dependencies:
   flutter_test:
