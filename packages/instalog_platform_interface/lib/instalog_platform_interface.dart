@@ -7,10 +7,10 @@ class InstalogOptions {
   ///
   /// All properties default to true if not specified.
   const InstalogOptions({
-    this.isLogEnabled = false,
-    this.isLoggerEnabled = false,
+    this.isLogEnabled = true,
     this.isCrashEnabled = true,
     this.isFeedbackEnabled = true,
+    this.isLoggerEnabled = false,
   });
 
   /// Whether event logging functionality is enabled.
